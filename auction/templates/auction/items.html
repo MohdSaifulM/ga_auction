@@ -7,7 +7,7 @@ Items Listing
 
 <h1> Items Listing Page </h1>
 {% for item in items %}
-<div> {{ item.name }} <a href=""> Show Item Details</div>
+<div> {{ item.name }} <a href="{% url 'single_item' item.id %}"> Show Item Details</div>
 </div>
 
 {% endfor %}

@@ -1,5 +1,5 @@
 from django.http.response import HttpResponse, HttpResponseRedirect
-from auction.models import Category
+from auction.models import Category, Item
 from django.urls import reverse
 from django.shortcuts import render
 from django import forms
@@ -31,3 +31,15 @@ def index(request):
 
 def show(request):
     return render(request, 'auction/show.html')
+
+
+def listing(request):
+    items = Item.objects.all()
+
+    return render(request, "auction/items.html", {"items": items})
+
+
+def list_item(request, id):
+    item = Item.objects.get(pk=id)
+
+    return render(request, "auction/item.html", {"item": item})
