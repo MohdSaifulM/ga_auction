@@ -13,7 +13,8 @@ This is the index page
 </form>
 <div>
     {% for cat in categories %}
-    <div> Name: {{cat.name}} </div>
+    <div> Name: {{cat.name}} <a href="{% url 'show_category' cat.id %}">Show</a><a
+            href="{% url 'show_category' cat.id %}?del=true"> delete</a></div>
     {% endfor %}
 </div>
 {% endblock  %}

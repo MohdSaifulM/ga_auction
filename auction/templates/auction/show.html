@@ -3,4 +3,12 @@
 
 {% block body %}
 <h1> show page</h1>
+Name: {{category.name}}
+<div>
+    <form method="POST" action="{% url 'show_category' category.id %}">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit" class="btn btn-block btn-primary"> Update</button>
+    </form>
+</div>
 {% endblock  %}

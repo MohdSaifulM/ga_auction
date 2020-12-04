@@ -1,4 +1,18 @@
 {% extends "auction/base.html" %}
 {% block body %}
 <h3> {{ item.name}} </h3>
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.errors }}
+    {{form}}
+    {% comment %} <div class="form-row">
+        {{form.name}}
+    </div>
+    <div class="form-row">
+        {{form.price}}
+    </div> {% endcomment %}
+    <button type="sumbit">Edit Item </button>
+</form>
 {% endblock  %}

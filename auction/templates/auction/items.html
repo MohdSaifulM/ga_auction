@@ -6,9 +6,23 @@ Items Listing
 {% block body %}
 
 <h1> Items Listing Page </h1>
-{% for item in items %}
-<div> {{ item.name }} <a href="{% url 'single_item' item.id %}"> Show Item Details</div>
-</div>
+<form action="" method="POST">
+    {% csrf_token %}
+    {% comment %} display as paragraphs {% endcomment %}
+    {{form.as_p}}
+    {% comment %} <div class="form-row">
+        {{form.name}}
+    </div>
+    <div class="form-row">
+        {{form.price}}
+    </div> {% endcomment %}
+    <button type="sumbit" class="btn btn-block btn-primary">Add Item </button>
+</form>
+<ul class="list-group">
+    {% for item in items %}
+    <li class="list-group-item">{{ item.name }} <a href="{% url 'single_item' item.id %}"> Show </a></li>
 
-{% endfor %}
+
+    {% endfor %}
+</ul>
 {% endblock %}
