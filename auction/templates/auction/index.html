@@ -1,4 +1,5 @@
 {% extends "auction/base.html" %}
+{% load crispy_forms_tags %}
 {% block title%}
 This is the index page
 {% endblock  %}
@@ -7,8 +8,8 @@ This is the index page
 <h1> categories page</h1>
 <form action="{% url 'index' %}" method="POST">
     {% csrf_token %}
-    {{ form }}
-    <button type="submit">Add Category</button>
+    {{ form | crispy }}
+    <button type="submit" class="btn btn-block btn-primary">Add Category</button>
 </form>
 <div>
     {% for cat in categories %}

@@ -1,4 +1,6 @@
+from django.http.response import HttpResponse, HttpResponseRedirect
 from auction.models import Category
+from django.urls import reverse
 from django.shortcuts import render
 from django import forms
 
@@ -10,8 +12,20 @@ class NewCategoryForm(forms.Form):
 
 # Create your views here.
 def index(request):
-    categories = Category.objects.all()
+    if request.method == "POST":  # django
+        form_data = NewCategoryForm(request.POST)  # django
+        if form_data.is_valid():  # django
+            name = form_data.cleaned_data['name']  # django
+            # new Category(request.body)
+            category = Category(name=name)  # django
 
+            category.save()  # django
+        else:
+            return HttpResponseRedirect(reverse("index"))  # django
+
+    # Category.find() []
+    categories = Category.objects.all()  # django
+    # django
     return render(request, 'auction/index.html', {"categories": categories, "form": NewCategoryForm()})
 
 

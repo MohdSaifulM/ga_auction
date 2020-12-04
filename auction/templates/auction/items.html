@@ -1,0 +1,14 @@
+{% extends "auction/base.html" %}
+{% block title%}
+Items Listing
+{% endblock  %}
+
+{% block body %}
+
+<h1> Items Listing Page </h1>
+{% for item in items %}
+<div> {{ item.name }} <a href=""> Show Item Details</div>
+</div>
+
+{% endfor %}
+{% endblock %}
